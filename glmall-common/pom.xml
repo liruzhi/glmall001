@@ -18,6 +18,10 @@
         <java.version>1.8</java.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
 <!--        mybaits-plus-->
         <dependency>
             <groupId>com.baomidou</groupId>
