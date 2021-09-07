@@ -12,9 +12,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  *  2. 编写一个接口，告诉springCloud该接口需要调用的远程服务
  *  3. 开启远程调用功能
  */
-@EnableFeignClients(basePackages = "com.glmall.user.feign")
+//@EnableFeignClients(clients = F)
 @EnableDiscoveryClient
 @SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
+@EnableFeignClients(basePackages = "com.glmall.user.feign")
 public class GlmallUserApplication {
 
     public static void main(String[] args) {
