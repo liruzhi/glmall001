@@ -16,7 +16,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 //扫描mapper文件夹
 @MapperScan("com.glmall.user.mapper")
 @EnableDiscoveryClient
-@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
+//@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
+@SpringBootApplication()
 @EnableFeignClients(basePackages = "com.glmall.user.feign")
 public class GlmallUserApplication {
 
