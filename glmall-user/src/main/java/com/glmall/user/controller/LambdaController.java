@@ -5,17 +5,22 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class TestController {
+public class LambdaController {
+
     public static void main(String[] args) {
         System.out.println(filter(Arrays.asList("a", "b", "", "d"), (String s) -> !s.isEmpty()));
 
         forEach(Arrays.asList(1,2,3,4), (Integer i) -> System.out.println(i));
 
         System.out.println(map(Arrays.asList("lambdas", "in", "action"), (String s) -> s.length()));
+        System.out.println(map(Arrays.asList("lambdas", "in", "action"), String::length));
+        System.out.println(map(Arrays.asList(1, 2, 3), (Integer i) -> i+1));
+
     }
 
     public static <T> List<T> filter(List<T> list, Predicate<T> p) {
         List<T> results = new ArrayList<>();
+
         for (T s:list) {
             if (p.test(s)) {
                 results.add(s);
