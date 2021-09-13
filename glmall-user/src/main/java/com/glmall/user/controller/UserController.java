@@ -7,7 +7,12 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.ClientInfoStatus;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
+import java.util.function.Predicate;
 
 @RefreshScope
 @RestController
@@ -41,4 +46,41 @@ public class UserController {
 
         return map;
     }
+
+    public static void main(String[] args) {
+        forEach(Arrays.asList(1,2,3,4,5), (Integer i) -> System.out.println(i));
+
+//        List<String> listOfStrings = new ArrayList<>();
+//        listOfStrings.add("a");
+//        listOfStrings.add("");
+//        listOfStrings.add("c");
+//        listOfStrings.add("d");
+//        System.out.println(listOfStrings);
+//        List<String> nonEmpty = filter(listOfStrings, (String s) -> !s.isEmpty() && !"a".equals(s));
+        List<String> nonEmpty = filter(Arrays.asList("a","","c"), (String s) -> !s.isEmpty() && !"a".equals(s));
+        System.out.println("=============");
+        System.out.println(nonEmpty);
+    }
+
+    public static <T> List<T> filter(List<T> list, Predicate<T> p) {
+        List<T> results = new ArrayList<>();
+        for (T s: list) {
+            if (p.test(s)) {
+                results.add(s);
+            }
+        }
+        return results;
+    }
+
+    public interface Consumer<T> {
+        void accept(T t);
+    }
+
+    public static  <T> void forEach(List<T> list, Consumer<T> c) {
+        for(T i: list) {
+            c.accept(i);
+        }
+    }
+
+
 }
